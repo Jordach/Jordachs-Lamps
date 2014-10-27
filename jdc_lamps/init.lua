@@ -1,18 +1,18 @@
-namespace = "jdc_lamps:"
+local namespace = "jdc_lamps:"
 
-function craft_lamp(dye_colour)
+local function craft_lamp(dye_colour)
 	minetest.register_craft({
-		output = 'jdc_lamps:'..dye_colour,
+		output = namespace..dye_colour,
 		recipe = {
 			{'', 'dye:'..dye_colour, ''},
-			{'dye:'..dye_colour, 'jdc_lamps:frame_glass', 'dye:'..dye_colour},
+			{'dye:'..dye_colour, namespace..'frame_glass', 'dye:'..dye_colour},
 			{'', 'dye:'..dye_colour, ''},
 		}
 	})
 end
 
-function create_lamp(name, desc)
-	minetest.register_node("jdc_lamps:"..name, {
+local function create_lamp(name, desc)
+	minetest.register_node(namespace..name, {
 		description = desc.." Lamp",
 		drawtype = "mesh",
 		tiles = {"lamp_"..name..".png"},
@@ -27,7 +27,7 @@ function create_lamp(name, desc)
 end
 
 minetest.register_craft({
-	output = 'jdc_lamps:frame',
+	output = namespace..'frame',
 	recipe = {
 		{'default:steel_ingot', 'group:wood', 'default:steel_ingot'},
 		{'group:wood', 'default:torch', 'group:wood'},
@@ -38,7 +38,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = 'jdc_lamps:frame_glass',
+	output = namespace..'frame_glass',
 	recipe = {'default:glass', 'jdc_lamps:frame'},
 })
 
